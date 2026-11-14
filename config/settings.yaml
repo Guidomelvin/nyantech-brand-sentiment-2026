@@ -1,0 +1,228 @@
+# Konfigurasi Pipeline NYANTECH Brand Sentiment 2026
+
+channel:
+  handle: "@NYANTECH"
+  # Opsional: isi channel_id jika sudah diketahui
+  channel_id: ""
+  timezone: "Asia/Jakarta"
+
+date_filter:
+  start_date: "2026-01-01"
+  end_date: "2026-12-31"
+  # Gunakan timezone channel (WIB) untuk batas tanggal & pengelompokan kuartal
+  use_local_timezone: true
+
+scraping:
+  include_replies: true
+  max_comments_per_video: null # null = ambil seluruh komentar
+  transcript_languages:
+    - "id"
+    - "en"
+  request_delay_seconds: 0.15
+  checkpoint_every_n_videos: 5
+
+smartphone_filter:
+  min_confidence_score: 2
+  # Video Shorts (<60s) bisa disertakan atau di-skip; default disertakan jika membahas smartphone
+  exclude_shorts: false
+  positive_keywords:
+    - "smartphone"
+    - "hp"
+    - "hape"
+    - "handphone"
+    - "ponsel"
+    - "flagship"
+    - "midrange"
+    - "entry level"
+    - "kamera hp"
+    - "gaming phone"
+    - "unboxing"
+    - "review"
+    - "rekomendasi hp"
+    - "mending"
+    - "snapdragon"
+    - "dimensity"
+    - "exynos"
+    - "bionic"
+    - "tensor"
+    - "amoled"
+    - "mah"
+    - "antutu"
+    - "ram"
+    - "ufs"
+  negative_keywords:
+    - "laptop"
+    - "notebook"
+    - "ultrabook"
+    - "macbook"
+    - "pc gaming"
+    - "rakit pc"
+    - "vga"
+    - "rtx"
+    - "monitor"
+    - "keyboard"
+    - "mouse"
+    - "tws"
+    - "earbuds"
+    - "headphone"
+    - "smartwatch"
+    - "smartband"
+    - "tablet"
+    - "ipad"
+    - "konsol"
+    - "ps5"
+    - "nintendo"
+    - "kamera mirrorless"
+    - "drone"
+    - "powerbank"
+    - "charger"
+
+brands:
+  # Mapping canonical brand -> alias/sub-brand/seri model populer di Indonesia
+  Samsung:
+    - "samsung"
+    - "galaxy s"
+    - "galaxy a"
+    - "galaxy m"
+    - "galaxy z"
+    - "z fold"
+    - "z flip"
+    - "s24"
+    - "s25"
+    - "s26"
+    - "a55"
+    - "a56"
+    - "a57"
+    - "a35"
+    - "a36"
+    - "a16"
+    - "a17"
+  Apple:
+    - "apple"
+    - "iphone"
+    - "iphone 15"
+    - "iphone 16"
+    - "iphone 17"
+    - "iphone 18"
+    - "iphone se"
+    - "ios"
+  Xiaomi:
+    - "xiaomi"
+    - "redmi"
+    - "redmi note"
+    - "xiaomi 14"
+    - "xiaomi 15"
+    - "xiaomi 16"
+    - "xiaomi 17"
+    - "hyperos"
+  POCO:
+    - "poco"
+    - "poco x"
+    - "poco f"
+    - "poco m"
+    - "poco c"
+  OPPO:
+    - "oppo"
+    - "reno"
+    - "find x"
+    - "find n"
+    - "coloros"
+  Vivo:
+    - "vivo"
+    - "vivo v"
+    - "vivo x"
+    - "vivo y"
+    - "funtouch"
+    - "originos"
+  iQOO:
+    - "iqoo"
+    - "iqoo z"
+    - "iqoo neo"
+    - "iqoo 12"
+    - "iqoo 13"
+    - "iqoo 15"
+  Realme:
+    - "realme"
+    - "realme gt"
+    - "realme c"
+    - "realme note"
+    - "narzo"
+  Nothing:
+    - "nothing"
+    - "nothing phone"
+    - "cmf phone"
+    - "nothing os"
+  Infinix:
+    - "infinix"
+    - "infinix gt"
+    - "infinix note"
+    - "infinix zero"
+    - "infinix hot"
+    - "infinix smart"
+  Tecno:
+    - "tecno"
+    - "tecno camon"
+    - "tecno pova"
+    - "tecno spark"
+    - "phantom v"
+  Itel:
+    - "itel"
+    - "itel rs"
+    - "itel s"
+    - "itel p"
+  ASUS:
+    - "asus"
+    - "rog phone"
+    - "zenfone"
+  Google:
+    - "google pixel"
+    - "pixel 8"
+    - "pixel 9"
+    - "pixel 10"
+    - "pixel 11"
+  Huawei:
+    - "huawei"
+    - "pura"
+    - "mate x"
+    - "mate 70"
+    - "nova"
+  Honor:
+    - "honor"
+    - "honor magic"
+    - "honor x"
+    - "honor 200"
+    - "honor 400"
+  Motorola:
+    - "motorola"
+    - "moto g"
+    - "moto edge"
+    - "razr"
+  ZTE:
+    - "zte"
+    - "nubia"
+    - "redmagic"
+  Sony:
+    - "sony"
+    - "xperia"
+  Sharp:
+    - "sharp"
+    - "aquos"
+
+price_segments:
+  - label: "1-3 juta"
+    min_idr: 0
+    max_idr: 3000000
+  - label: "3-6 juta"
+    min_idr: 3000001
+    max_idr: 6000000
+  - label: "6-10 juta"
+    min_idr: 6000001
+    max_idr: 10000000
+  - label: ">10 juta"
+    min_idr: 10000001
+    max_idr: null
+
+paths:
+  raw_dir: "data/raw"
+  processed_dir: "data/processed"
+  outputs_dir: "data/outputs"
